@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
+import { Task } from '../../models/Task';
 
 @IonicPage({
 	name: 'tasks',
@@ -9,4 +10,10 @@ import { IonicPage } from 'ionic-angular';
 	selector: 'page-task-list',
 	templateUrl: 'task-list.html',
 })
-export class TaskListPage { }
+export class TaskListPage {
+	tasks: Task[] = []
+
+	async ionViewWillEnter() {
+		this.tasks = await Task.findAll()
+	}
+}

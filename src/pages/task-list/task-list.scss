@@ -1,3 +1,24 @@
 page-task-list {
 
+	.toolbar-content {
+		text-align: center !important;
+
+		button {
+			height: auto !important;
+
+			.button-inner {
+    			flex-direction: column !important;
+			}
+
+			ion-icon {
+				font-size: 2.8em !important;
+				margin-bottom: 4px !important;
+			}
+
+			p {
+				text-transform: none !important;
+				margin: 0 !important;
+			}
+		}
+	}
 }

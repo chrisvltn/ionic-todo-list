@@ -1,3 +1,7 @@
-<div>
-	{{text}}
-</div>
+<ion-item>
+	<ion-label (click)="edit()">
+		<h4>{{task.title}}</h4>
+		<p>{{task.description}}</p>
+	</ion-label>
+	<ion-toggle (ionChange)="save()" [(ngModel)]="task.done"></ion-toggle>
+</ion-item>

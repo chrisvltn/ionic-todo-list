@@ -1,9 +1,20 @@
 <ion-header>
 	<ion-navbar>
-		<ion-title>TaskList</ion-title>
+		<ion-title>Task List</ion-title>
 	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+	<ion-list>
+		<task-list-item *ngFor="let task of tasks" [task]="task"></task-list-item>
+	</ion-list>
 </ion-content>
+
+<ion-footer>
+	<ion-toolbar>
+		<button ion-button type="button" clear navPush="task-edit">
+			<ion-icon name="ios-add-circle-outline"></ion-icon>
+			<p>New task</p>
+		</button>
+	</ion-toolbar>
+</ion-footer>
