@@ -21,7 +21,7 @@ export class Database {
 	async connect() {
 		if (this.db) return this.db;
 		this.db = await new Promise((resolve, reject) => {
-			const db = SQLite.openDatabase({ name: 'tasklist5.db' }, () => resolve(db), err => reject(err))
+			const db = SQLite.openDatabase({ name: 'tasklist5.db', location: 'default' }, () => resolve(db), err => reject(err))
 		})
 		return this.db
 	}
@@ -35,8 +35,8 @@ export class Database {
 		params = this.treatParams(params)
 		return new Promise<SQLResult>(resolve => {
 			this.db.transaction(async tx => {
-				const [newTx, results] = await (new Promise((resolve, reject) => {
-					tx.executeSql(sql, params, (a, b) => resolve([a, b]), err => reject(err))
+				const results = await (new Promise((resolve, reject) => {
+					tx.executeSql(sql, params, (a, b) => resolve(b), err => reject(err))
 				})) as any
 				resolve(results)
 			})
@@ -117,7 +117,7 @@ export class Database {
 		const values = []
 		let sql = ''
 		if (where) {
-			Object.keys(where).forEach(k => values.push(where[k]))
+			Object.keys(where).forEach(k => values.push(where[k as any]))
 			sql = 'WHERE ' + Object.keys(where).map(k => k + ' = ?').join(' AND ')
 		}
 		return {
