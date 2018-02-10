@@ -8,8 +8,9 @@
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
-    "run:android": "ionic run android",
-    "run:android:device": "ionic run android --device"
+    "run:android": "ionic cordova run android",
+    "run:android:device": "ionic cordova run android --device",
+    "run:android:device:release": "ionic cordova run android --release --prod --aot --buildConfig=\"build.json\" --device"
   },
   "dependencies": {
     "@angular/common": "5.0.3",
