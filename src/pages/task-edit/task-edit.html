@@ -1,9 +1,24 @@
 <ion-header>
 	<ion-navbar>
-		<ion-title>TaskEdit</ion-title>
+		<ion-title>{{edit ? 'Edit' : 'New'}} task</ion-title>
 	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+	<ion-list>
+		<ion-item>
+			<ion-label stacked>Title</ion-label>
+			<ion-input required name="task.title" [(ngModel)]="task.title" autofocus placeholder="To do homework..."></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label stacked>Description</ion-label>
+			<ion-input required name="task.description" [(ngModel)]="task.description" autofocus placeholder="Go home and do homework..."></ion-input>
+		</ion-item>
+	</ion-list>
 </ion-content>
+
+<ion-footer>
+	<ion-navbar color="primary">
+		<button (click)="save()" ion-button block type="button">Salvar</button>
+	</ion-navbar>
+</ion-footer>
